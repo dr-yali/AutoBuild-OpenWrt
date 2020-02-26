@@ -5,7 +5,7 @@
 # Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
 
-name: Build_Newifi_D21
+name: Build_Newifi_D2-frpsadd
 
 on: 
   release:
@@ -60,7 +60,9 @@ jobs:
       env: 
         REPO_URL: https://github.com/coolsnowwolf/lede
         REPO_BRANCH: master
-      run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+      run:  |
+        git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+        git clone https://github.com/kuoruan/openwrt-frp.git package/frp
 
     - name: Update & Install feeds
       working-directory: ./openwrt
